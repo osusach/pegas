@@ -16,9 +16,9 @@
 			volver
 		</a>
 		<div class="mt-12 ms-1 overflow-scroll max-h-[90vh]">
-			<h1>{offer.id}</h1>
-			<p>{offer.source}</p>
+			<h1 class="text-2xl font-bold">{offer.id}</h1>
 			<p>{@html offer.content}</p>
+			<p> <span class="font-semibold">Fuente: </span> {offer.source} <span class="font-semibold">Fecha: </span> {offer.date}</p>
 		</div>
 	{:else}
 		<p>Cargando...</p>
