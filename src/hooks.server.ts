@@ -1,3 +1,3 @@
-import client from '$db/turso';
+import client from "$db/turso";
 
-console.log('connected client:', client);
+console.log("connected client:", client);
