@@ -27,6 +27,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@fontsource-variable/inter": "^5.0.16",
     "@libsql/client": "^0.4.0-pre.5"
   }
 }
