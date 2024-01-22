@@ -14,7 +14,7 @@
   {#if offer}
     <a
       href="/"
-      class="w-[6.5vw] border border-white rounded-md hover:bg-gray-600 h-fit py-1 ps-2 m-2"
+      class="btn rounded-md"
     >
       volver
     </a>

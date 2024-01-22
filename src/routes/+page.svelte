@@ -1,12 +1,12 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import type { Offer } from "$lib/utils/types";
+  import { offers } from "$lib/utils/store";
   import FilterItem from "$lib/components/filterItem.svelte";
   import OfferCard from "$lib/components/offerCard.svelte";
   import Pagination from "$lib/components/pagination.svelte";
   import SearchBar from "$lib/components/searchBar.svelte";
 
-  const offers: Offer[] = [];
   let pagedOffers: Offer[] = [];
   let page = 1;
   let offersPerPage = 5;
@@ -14,21 +14,22 @@
 
   const allJobs = async () => {
     const res = await fetch("/api/jobs");
-    const data = await res.json();
+    const data: Offer[] = await res.json();
 
-    offers.push(...data);
-    pagedOffers = offers.slice(0, offersPerPage);
+    $offers.push(...data);
+    pagedOffers = $offers.slice(0, offersPerPage);
   };
 
   onMount(() => {
-    allJobs();
+    if ($offers.length === 0) { allJobs() };
+    pagedOffers = $offers.slice(0, offersPerPage);
   });
 
   // Función para filtrar las ofertas
 
   const filterOffers = (e: any) => {
     const text = e.target.value.toLowerCase();
-    const filteredOffers = offers.filter((offer) => {
+    const filteredOffers = $offers.filter((offer) => {
       // Retorna la oferta si el texto ingresado se encuentra en el titulo, empresa o contenido
       return (
         offer.content.toLowerCase().includes(text) ||
@@ -43,7 +44,7 @@
   const clearFilter = () => {
     // Limpiar el input
     (<HTMLInputElement>document.getElementById("filter")).value = "";
-    pagedOffers = offers.slice(0, offersPerPage);
+    pagedOffers = $offers.slice(0, offersPerPage);
     page = 1;
   };
 
@@ -60,7 +61,7 @@
   };
 
   const filterByOptions = () => {
-    const filteredOffers = offers.filter((offer) => {
+    const filteredOffers = $offers.filter((offer) => {
       if (filtros.length === 0) {
         return true;
       }
@@ -84,14 +85,14 @@
     page--;
     const start = (page - 1) * offersPerPage;
     const end = page * offersPerPage;
-    pagedOffers = offers.slice(start, end);
+    pagedOffers = $offers.slice(start, end);
   };
 
   const nextPage = () => {
     page++;
     const start = (page - 1) * offersPerPage;
     const end = page * offersPerPage;
-    pagedOffers = offers.slice(start, end);
+    pagedOffers = $offers.slice(start, end);
   };
 </script>
 
@@ -102,31 +103,36 @@
       <details class="flex dropdown xl:dropdown-open items-center">
         <summary class="m-1 btn">Filtros</summary>
         <ul class="shadow dropdown-content z-[1] bg-primary rounded-box w-full">
-          <li><FilterItem
-            text="Práctica"
-            show={false}
-            func={manageFilters}
-            filterWords={["internship", "practica", "trabajo de titulo"]}
-          /></li>
-          <li><FilterItem
-            text="Desarrollo Web"
-            show={false}
-            func={manageFilters}
-            filterWords={["web", "desarrollo web"]}
-          /></li>
-          <li><FilterItem
-            text="IA"
-            show={false}
-            func={manageFilters}
-            filterWords={[
-              "machine learning",
-              "artificial intelligence",
-              "inteligencia artificial",
-            ]}
-          /></li>
+          <li>
+            <FilterItem
+              text="Práctica"
+              show={false}
+              func={manageFilters}
+              filterWords={["internship", "practica", "trabajo de titulo"]}
+            />
+          </li>
+          <li>
+            <FilterItem
+              text="Desarrollo Web"
+              show={false}
+              func={manageFilters}
+              filterWords={["web", "desarrollo web"]}
+            />
+          </li>
+          <li>
+            <FilterItem
+              text="IA"
+              show={false}
+              func={manageFilters}
+              filterWords={[
+                "machine learning",
+                "artificial intelligence",
+                "inteligencia artificial",
+              ]}
+            />
+          </li>
         </ul>
       </details>
-
     </div>
 
     <div class="flex flex-col xl:w-3/4 p-4">
