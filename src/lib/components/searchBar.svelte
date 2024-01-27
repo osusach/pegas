@@ -3,7 +3,7 @@
   export let clearFilter: () => any;
 </script>
 
-<div class="flex items-center w-full">
+<div class="flex w-full items-center">
   <!-- Buscador con paginacion -->
   <input
     id="filter"
@@ -13,7 +13,7 @@
     class="input input-bordered input-md w-full"
   />
   <button
-    class="btn-xs btn btn-circle btn-outline hover:btn-error -ms-8"
+    class="btn btn-circle btn-outline btn-xs -ms-8 hover:btn-error"
     on:click={clearFilter}
   >
     <svg

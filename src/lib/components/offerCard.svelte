@@ -25,12 +25,12 @@
 </script>
 
 <button
-  class="h-fit flex flex-col w-full bg-info-content text-white p-4 rounded-sm hover:bg-stone-700 text-left"
+  class="flex h-fit w-full flex-col rounded-sm bg-info-content p-4 text-left text-white hover:bg-stone-700"
   on:click={() => verMas(offer)}
 >
   <div class="flex items-baseline justify-between gap-2">
-    <div class="flex lg:gap-5 flex-wrap items-center">
-      <h1 class="p-1 pb-2 overflow-hidden overflow-ellipsis font-bold">
+    <div class="flex flex-wrap items-center lg:gap-5">
+      <h1 class="overflow-hidden overflow-ellipsis p-1 pb-2 font-bold">
         {offer.id}
       </h1>
       <p class="badge badge-secondary badge-outline">
@@ -42,7 +42,7 @@
     </p>
   </div>
   <div class="divider divider-accent"></div>
-  <p class=" overflow-ellipsis p-1 line-clamp-5">
+  <p class=" line-clamp-5 overflow-ellipsis p-1">
     {@html offer.content}
     <!-- {procesarContenidoHTML(offer.content)} -->
   </p>

@@ -22,16 +22,16 @@
   });
 </script>
 
-<div class="flex flex-col p-3 gap-5 items-center h-screen">
+<div class="flex h-screen flex-col items-center gap-5 p-3">
   <a
     href="/"
-    class="btn btn-md btn-outline w-full text-xl"
+    class="btn btn-outline btn-md w-full text-xl"
     aria-label="Volver a la página principal"
   >
     Volver
   </a>
 
-  <div class="flex flex-grow items-center justify-center h-auto">
+  <div class="flex h-auto flex-grow items-center justify-center">
     {#await offerPromise}
       <Loading />
     {:then offer}
@@ -48,7 +48,7 @@
       <div role="alert" class="alert alert-error w-fit">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="stroke-current shrink-0 h-6 w-6"
+          class="h-6 w-6 shrink-0 stroke-current"
           fill="none"
           viewBox="0 0 24 24"
           ><path

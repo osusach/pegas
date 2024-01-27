@@ -95,12 +95,12 @@
 </script>
 
 <main class="max-h-screen">
-  <div class="flex flex-col xl:flex-row justify-center">
-    <div class="flex flex-col p-3 min-w-[20rem] gap-4">
+  <div class="flex flex-col justify-center xl:flex-row">
+    <div class="flex min-w-[20rem] flex-col gap-4 p-3">
       <SearchBar filter={filterOffers} {clearFilter} />
-      <details class="flex dropdown md:dropdown-open items-center">
-        <summary class="m-1 btn">Filtros</summary>
-        <ul class="shadow dropdown-content z-[1] bg-primary rounded-box w-full">
+      <details class="dropdown flex items-center md:dropdown-open">
+        <summary class="btn m-1">Filtros</summary>
+        <ul class="dropdown-content z-[1] w-full rounded-box bg-primary shadow">
           <li>
             <FilterItem
               text="Práctica"
@@ -133,7 +133,7 @@
       </details>
     </div>
 
-    <div class="flex flex-col xl:w-3/4 p-4">
+    <div class="flex flex-col p-4 xl:w-3/4">
       <Pagination
         {offersPerPage}
         {page}
@@ -141,7 +141,7 @@
         {previousPage}
         {nextPage}
       />
-      <div class="flex flex-col items-center align-middle gap-1">
+      <div class="flex flex-col items-center gap-1 align-middle">
         {#await jobsPromise}
           <Loading class="my-[30vh]" />
         {:then}
