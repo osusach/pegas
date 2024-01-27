@@ -20,9 +20,7 @@
     pagedOffers = offers.slice(0, offersPerPage);
   };
 
-  onMount(() => {
-    allJobs();
-  });
+  let jobsPromise = allJobs();
 
   // Función para filtrar las ofertas
 
@@ -137,10 +135,22 @@
         {previousPage}
         {nextPage}
       />
-      <div class="flex flex-col gap-1">
-        {#each pagedOffers as offer}
-          <OfferCard {offer} />
-        {/each}
+      <div class="flex flex-col items-center gap-1">
+        {#await jobsPromise}
+        <div class="flex items-center gap-4 skeleton p-24">
+
+          <p>Cargando...</p><span class="loading loading-infinity loading-lg"></span>
+        </div>
+        {:then} 
+        
+          {#each pagedOffers as offer}
+            <OfferCard {offer} />
+          {/each}
+          
+        {:catch error}
+        <p>error: {error}</p>
+        {/await}
+
       </div>
       <Pagination
         {offersPerPage}
