@@ -8,9 +8,13 @@ import type { Offer } from "$lib/types";
 export const GET: RequestHandler = async (request) => {
   const { params } = request;
   const { id } = params;
-  console.log(`SELECT * FROM goodies id='${id}'`);
-  const res = (await client.execute(`SELECT * FROM goodies id='${id}'`)).rows;
-  const offers: Offer[] = res.map((r) => {
+  const query = `SELECT * FROM goodies WHERE id='${id}';`;
+  const res = await client.execute(query);
+  if (res.rows.length === 0) {
+    return json({ error: "Not found" });
+  }
+  const rows = res.rows;
+  const offers: Offer[] = rows.map((r) => {
     return {
       id: r.id as string,
       date: r.date as string,
@@ -19,7 +23,7 @@ export const GET: RequestHandler = async (request) => {
     };
   });
 
-  return json(offers);
+  return json(offers[0]);
 };
 // export async function GET(id: string) {
 //     const res = (await client.execute(`SELECT * FROM goodies WHERE id = ${id}`)).rows

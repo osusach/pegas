@@ -1,6 +1,6 @@
 <script>
   import "../app.css";
-  import '@fontsource-variable/inter';
+  import "@fontsource-variable/inter";
 </script>
 
 <div class="h-screen w-screen bg-base-100 text-gray-100">
@@ -9,6 +9,6 @@
 
 <style>
   :global(body) {
-    font-family: 'Inter Variable', sans-serif;
+    font-family: "Inter Variable", sans-serif;
   }
 </style>

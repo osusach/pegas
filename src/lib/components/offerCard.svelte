@@ -6,7 +6,8 @@
   export let offer: Offer;
 
   const verMas = (offer: Offer) => {
-    $viewedOffer = offer;
+    viewedOffer.set(offer);
+
     goto(`/jobs/${formatID(offer.id)}`);
   };
 
@@ -41,7 +42,8 @@
     </p>
   </div>
   <div class="divider divider-accent"></div>
-  <p class=" overflow-ellipsis p-1 line-clamp-3">
-    {procesarContenidoHTML(offer.content)}
+  <p class=" overflow-ellipsis p-1 line-clamp-5">
+    {@html offer.content}
+    <!-- {procesarContenidoHTML(offer.content)} -->
   </p>
 </button>

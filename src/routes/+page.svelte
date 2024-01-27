@@ -6,6 +6,7 @@
   import OfferCard from "$lib/components/offerCard.svelte";
   import Pagination from "$lib/components/pagination.svelte";
   import SearchBar from "$lib/components/searchBar.svelte";
+  import Loading from "$lib/components/loading.svelte";
 
   let pagedOffers: Offer[] = [];
   let page = 1;
@@ -97,7 +98,7 @@
   <div class="flex flex-col xl:flex-row justify-center">
     <div class="flex flex-col p-3 min-w-[20rem] gap-4">
       <SearchBar filter={filterOffers} {clearFilter} />
-      <details class="flex dropdown xl:dropdown-open items-center">
+      <details class="flex dropdown md:dropdown-open items-center">
         <summary class="m-1 btn">Filtros</summary>
         <ul class="shadow dropdown-content z-[1] bg-primary rounded-box w-full">
           <li>
@@ -140,22 +141,16 @@
         {previousPage}
         {nextPage}
       />
-      <div class="flex flex-col items-center gap-1">
+      <div class="flex flex-col items-center align-middle gap-1">
         {#await jobsPromise}
-        <div class="flex items-center gap-4 skeleton p-24">
-
-          <p>Cargando...</p><span class="loading loading-infinity loading-lg"></span>
-        </div>
-        {:then} 
-        
+          <Loading class="my-[30vh]" />
+        {:then}
           {#each pagedOffers as offer}
             <OfferCard {offer} />
           {/each}
-          
         {:catch error}
-        <p>error: {error}</p>
+          <p>error: {error}</p>
         {/await}
-
       </div>
       <Pagination
         {offersPerPage}
