@@ -28,11 +28,11 @@
   on:click={() => verMas(offer)}
 >
   <div class="flex items-baseline justify-between gap-2">
-    <div class="flex lg:gap-5 flex-wrap">
+    <div class="flex lg:gap-5 flex-wrap items-center">
       <h1 class="p-1 pb-2 overflow-hidden overflow-ellipsis font-bold">
         {offer.id}
       </h1>
-      <p class="">
+      <p class="badge badge-secondary badge-outline">
         {offer.source}
       </p>
     </div>

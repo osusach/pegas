@@ -2,32 +2,34 @@
   import { onMount } from "svelte";
   import type { Offer } from "$lib/utils/types";
   import { viewedOffer } from "$lib/utils/store";
+  import { goto } from "$app/navigation";
 
   let offer: Offer;
 
-  onMount(() => {
-    offer = $viewedOffer;
-  });
+  //! no es necesario, no es una promesa, si hay errores descomentar
+  // onMount(() => {
+  //   offer = $viewedOffer;
+  // });   
+  offer = $viewedOffer;
+
 </script>
 
-<div class="flex">
-  {#if offer}
+
+<div class="flex flex-col p-3 gap-5">
     <a
       href="/"
-      class="w-[6.5vw] border border-white rounded-md hover:bg-gray-600 h-fit py-1 ps-2 m-2"
+      class="btn btn-md btn-outline"
+      aria-label="Volver a la página principal"
     >
       volver
     </a>
-    <div class="mt-12 ms-1 overflow-scroll max-h-[90vh]">
-      <h1 class="text-2xl font-bold">{offer.id}</h1>
-      <p>{@html offer.content}</p>
-      <p>
-        <span class="font-semibold">Fuente: </span>
-        {offer.source} <span class="font-semibold">Fecha: </span>
-        {offer.date}
-      </p>
-    </div>
-  {:else}
-    <p>Cargando...</p>
-  {/if}
+      <div class="max-h-[90vh] gap-4">
+        <h1 class="text-2xl font-bold">{offer.id}</h1>
+        <p>{@html offer.content}</p>
+        <p>
+          <span class="font-semibold">Fuente: </span>
+          {offer.source} <span class="font-semibold">Fecha: </span>
+          {offer.date}
+        </p>
+      </div>
 </div>
