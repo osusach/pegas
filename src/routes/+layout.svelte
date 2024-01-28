@@ -3,7 +3,7 @@
   import "@fontsource-variable/inter";
 </script>
 
-<div class="bg-svg text-base-content">
+<div class="bg-svg text-base-content min-h-screen">
   <slot class="h-full items-center justify-center" />
 </div>
 

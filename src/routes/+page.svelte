@@ -123,11 +123,11 @@
   >
     <h1 class="text-center text-6xl font-black">Oprah</h1>
     <SearchBar filter={filterOffers} {clearFilter} />
-    <ul class="menu lg:menu-horizontal bg-base-200 rounded-box lg:mb-64">
+    <ul class="menu lg:menu-horizontal bg-secondary-content rounded-box lg:mb-64">
       <li class="w-full">
         <details open>
-          <summary>Filtros</summary>
-          <ul class="w-full h-fit">
+          <summary class="font-extrabold">Filtros</summary>
+          <ul class="w-full h-fit bg-secondary-content">
             {#each filterItems as item}
             <li class="h-fit">
 

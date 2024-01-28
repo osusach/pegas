@@ -45,12 +45,9 @@
         class="max-h-[90vh] gap-4 border border-[#b6b6b6] bg-secondary-content p-4 overflow-y-scroll"
       >
         <h1 class="text-3xl font-black">{offer.id}</h1>
+<span class="font-semibold">{offer.date}</span>
+        <div class="divider divider-accent"><span class="badge badge-info badge-outline">{offer.source}</span></div>
         <p>{@html offer.content}</p>
-        <p>
-          <span class="font-semibold">Fuente: </span>
-          {offer.source} <span class="font-semibold">Fecha: </span>
-          {offer.date}
-        </p>
       </div>
     {:catch error}
       <ErrorAlert>Error: {error.message}</ErrorAlert>
