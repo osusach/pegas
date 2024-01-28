@@ -7,6 +7,7 @@
   import Pagination from "$lib/components/pagination.svelte";
   import SearchBar from "$lib/components/searchBar.svelte";
   import Loading from "$lib/components/loading.svelte";
+  import ErrorAlert from "$lib/components/ErrorAlert.svelte";
 
   let pagedOffers: Offer[] = [];
   let page = 1;
@@ -150,7 +151,9 @@
           <OfferCard {offer} />
         {/each}
       {:catch error}
-        <p>error: {error}</p>
+        <ErrorAlert>
+          error: {error}
+        </ErrorAlert>
       {/await}
     </div>
     <Pagination

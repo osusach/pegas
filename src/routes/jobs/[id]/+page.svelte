@@ -3,11 +3,14 @@
   import type { Offer } from "$lib/utils/types";
   import { goto } from "$app/navigation";
   import Loading from "$lib/components/loading.svelte";
+  import ErrorAlert from "$lib/components/ErrorAlert.svelte";
+  import { viewedOffer } from "$lib/utils/store";
 
   export let data: any;
   let offerPromise: Promise<any> = new Promise(() => {});
 
   const getJob = async () => {
+    if ($viewedOffer.id) return $viewedOffer;
     const res = await fetch("/api/jobs/" + data.id);
     const offer = await res.json();
     if (!offer.error) {
@@ -47,21 +50,7 @@
         </p>
       </div>
     {:catch error}
-      <div role="alert" class="alert alert-error w-fit">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 shrink-0 stroke-current"
-          fill="none"
-          viewBox="0 0 24 24"
-          ><path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-          /></svg
-        >
-        <span>Error: {error.message}</span>
-      </div>
+      <ErrorAlert>Error: {error.message}</ErrorAlert>
     {/await}
   </div>
 </div>
