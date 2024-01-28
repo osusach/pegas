@@ -21,7 +21,10 @@
         "inteligencia artificial",
       ],
     },
-    { text: "Desarrollo Web", filterWords: ["web", "desarrollo web", "front-end", "frontend"] },
+    {
+      text: "Desarrollo Web",
+      filterWords: ["web", "desarrollo web", "front-end", "frontend"],
+    },
     {
       text: "Práctica",
       filterWords: ["internship", "practica", "trabajo de titulo"],
@@ -109,11 +112,13 @@
   };
 </script>
 
-<main class="flex flex-col justify-center xl:flex-row min-h-screen">
-  <div class="flex min-w-[20rem] m-4 flex-col gap-4 p-4 border border-white bg-base-100/50">
+<main class="flex min-h-screen flex-col justify-center xl:flex-row">
+  <div
+    class="m-4 flex min-w-[20rem] flex-col gap-4 border border-white bg-base-100/50 p-4"
+  >
     <SearchBar filter={filterOffers} {clearFilter} />
-    <details class="dropdown flex items-center dropdown-open">
-      <summary class="btn bg-secondary-content m-1">Filtros</summary>
+    <details class="dropdown dropdown-open flex items-center">
+      <summary class="btn m-1 bg-secondary-content">Filtros</summary>
       <ul class="dropdown-content z-[1] w-full rounded-box bg-secondary shadow">
         {#each filterItems as item}
           <li>

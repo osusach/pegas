@@ -8,4 +8,4 @@ export type Offer = {
 export type Filter = {
   text: string;
   filterWords: string[];
-}
+};
