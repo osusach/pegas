@@ -39,7 +39,7 @@
       <Loading />
     {:then offer}
       <div
-        class="max-h-[90vh] gap-4 border border-[#b6b6b6] bg-secondary-content p-4"
+        class="max-h-[90vh] gap-4 border border-[#b6b6b6] bg-secondary-content p-4 overflow-y-scroll"
       >
         <h1 class="text-3xl font-black">{offer.id}</h1>
         <p>{@html offer.content}</p>
