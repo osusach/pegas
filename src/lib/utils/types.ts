@@ -4,3 +4,8 @@ export type Offer = {
   content: string;
   source: string;
 };
+
+export type Filter = {
+  text: string;
+  filterWords: string[];
+}

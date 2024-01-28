@@ -10,7 +10,7 @@
     on:input={filter}
     type="text"
     placeholder="Buscar por titulo, empresa, etc..."
-    class="input input-bordered input-md w-full"
+    class="input input-bordered input-md w-full bg-secondary-content text-white"
   />
   <button
     class="btn btn-circle btn-outline btn-xs -ms-8 hover:btn-error"

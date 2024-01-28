@@ -22,10 +22,10 @@
   });
 </script>
 
-<div class="flex h-screen flex-col items-center gap-5 p-3">
+<div class="flex h-screen flex-col items-center gap-2 p-3">
   <a
     href="/"
-    class="btn btn-outline btn-md w-full text-xl"
+    class="btn btn-outline btn-md bg-secondary-content w-full text-xl"
     aria-label="Volver a la página principal"
   >
     Volver
@@ -35,8 +35,8 @@
     {#await offerPromise}
       <Loading />
     {:then offer}
-      <div class="max-h-[90vh] gap-4">
-        <h1 class="text-2xl font-bold">{offer.id}</h1>
+      <div class="max-h-[90vh] bg-secondary-content p-4 border border-[#b6b6b6] gap-4">
+        <h1 class="text-3xl font-black">{offer.id}</h1>
         <p>{@html offer.content}</p>
         <p>
           <span class="font-semibold">Fuente: </span>

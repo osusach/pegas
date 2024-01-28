@@ -11,7 +11,7 @@
 
 <input
   on:click={sendFilter}
-  class="btn btn-md w-full"
+  class="btn btn-md w-full bg-secondary-content"
   aria-label={text}
   bind:checked={show}
   type="checkbox"

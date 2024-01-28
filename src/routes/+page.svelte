@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import type { Offer } from "$lib/utils/types";
+  import type { Offer, Filter } from "$lib/utils/types";
   import { offers } from "$lib/utils/store";
   import FilterItem from "$lib/components/filterItem.svelte";
   import OfferCard from "$lib/components/offerCard.svelte";
@@ -12,6 +12,21 @@
   let page = 1;
   let offersPerPage = 5;
   const filtros: string[] = [];
+  const filterItems: Filter[] = [
+    {
+      text: "IA",
+      filterWords: [
+        "machine learning",
+        "artificial intelligence",
+        "inteligencia artificial",
+      ],
+    },
+    { text: "Desarrollo Web", filterWords: ["web", "desarrollo web", "front-end", "frontend"] },
+    {
+      text: "Práctica",
+      filterWords: ["internship", "practica", "trabajo de titulo"],
+    },
+  ];
 
   const allJobs = async () => {
     const res = await fetch("/api/jobs");
@@ -94,71 +109,51 @@
   };
 </script>
 
-<main class="max-h-screen">
-  <div class="flex flex-col justify-center xl:flex-row">
-    <div class="flex min-w-[20rem] flex-col gap-4 p-3">
-      <SearchBar filter={filterOffers} {clearFilter} />
-      <details class="dropdown flex items-center md:dropdown-open">
-        <summary class="btn m-1">Filtros</summary>
-        <ul class="dropdown-content z-[1] w-full rounded-box bg-primary shadow">
+<main class="flex flex-col justify-center xl:flex-row min-h-screen">
+  <div class="flex min-w-[20rem] m-4 flex-col gap-4 p-4 border border-white bg-base-100/50">
+    <SearchBar filter={filterOffers} {clearFilter} />
+    <details class="dropdown flex items-center dropdown-open">
+      <summary class="btn bg-secondary-content m-1">Filtros</summary>
+      <ul class="dropdown-content z-[1] w-full rounded-box bg-secondary shadow">
+        {#each filterItems as item}
           <li>
             <FilterItem
-              text="Práctica"
+              text={item.text}
               show={false}
               func={manageFilters}
-              filterWords={["internship", "practica", "trabajo de titulo"]}
+              filterWords={item.filterWords}
             />
           </li>
-          <li>
-            <FilterItem
-              text="Desarrollo Web"
-              show={false}
-              func={manageFilters}
-              filterWords={["web", "desarrollo web"]}
-            />
-          </li>
-          <li>
-            <FilterItem
-              text="IA"
-              show={false}
-              func={manageFilters}
-              filterWords={[
-                "machine learning",
-                "artificial intelligence",
-                "inteligencia artificial",
-              ]}
-            />
-          </li>
-        </ul>
-      </details>
-    </div>
+        {/each}
+      </ul>
+    </details>
+  </div>
 
-    <div class="flex flex-col p-4 xl:w-3/4">
-      <Pagination
-        {offersPerPage}
-        {page}
-        {pagedOffers}
-        {previousPage}
-        {nextPage}
-      />
-      <div class="flex flex-col items-center gap-1 align-middle">
-        {#await jobsPromise}
-          <Loading class="my-[30vh]" />
-        {:then}
-          {#each pagedOffers as offer}
-            <OfferCard {offer} />
-          {/each}
-        {:catch error}
-          <p>error: {error}</p>
-        {/await}
-      </div>
-      <Pagination
-        {offersPerPage}
-        {page}
-        {pagedOffers}
-        {previousPage}
-        {nextPage}
-      />
+  <div class="flex flex-col p-4 xl:w-3/4">
+    <Pagination
+      {offersPerPage}
+      {page}
+      {pagedOffers}
+      {previousPage}
+      {nextPage}
+    />
+    <div class="flex flex-col items-center gap-2 align-middle">
+      {#await jobsPromise}
+        <Loading class="my-[30vh]" />
+      {:then}
+        {#each pagedOffers as offer}
+          <OfferCard {offer} />
+        {/each}
+      {:catch error}
+        <p>error: {error}</p>
+      {/await}
     </div>
+    <Pagination
+      {offersPerPage}
+      {page}
+      {pagedOffers}
+      {previousPage}
+      {nextPage}
+    />
   </div>
 </main>

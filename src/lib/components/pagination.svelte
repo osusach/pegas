@@ -12,12 +12,12 @@
 
 <div class="join grid grid-cols-2">
   {#if page > 1}
-    <button on:click={previousPage} class="btn btn-outline join-item"
+    <button on:click={previousPage} class="btn btn-outline bg-info-content join-item"
       >Anterior</button
     >
   {/if}
   {#if pagedOffers.length === offersPerPage}
-    <button on:click={nextPage} class="btn btn-outline join-item col-start-2"
+    <button on:click={nextPage} class="btn btn-outline bg-info-content join-item col-start-2"
       >Siguiente</button
     >
   {/if}
