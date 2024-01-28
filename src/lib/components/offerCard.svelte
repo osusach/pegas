@@ -8,12 +8,7 @@
   const verMas = (offer: Offer) => {
     viewedOffer.set(offer);
 
-    goto(`/jobs/${formatID(offer.id)}`);
-  };
-
-  const formatID = (id: string) => {
-    // reemplaza el / por - y lo convierte a minusculas
-    return id.replace(/\//g, "-").toLowerCase();
+    goto(`/jobs/?id=${offer.id}`);
   };
 
   // Función para procesar el contenido HTML y mostrar solo el texto

@@ -8,6 +8,8 @@ import type { Offer } from "$lib/types";
 export const GET: RequestHandler = async (request) => {
   const { params } = request;
   const { id } = params;
+  console.log(id);
+  
   const query = `SELECT * FROM goodies WHERE id='${id}';`;
   const res = await client.execute(query);
   if (res.rows.length === 0) {

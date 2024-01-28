@@ -11,8 +11,11 @@
 
   const getJob = async () => {
     if ($viewedOffer.id) return $viewedOffer;
-    const res = await fetch("/api/jobs/" + data.id);
-    const offer = await res.json();
+    
+    const res = await fetch(`/api/jobs/?id=${data.id}`);
+    let offer = await res.json();
+    offer = offer[0];
+    
     if (!offer.error) {
       return offer;
     } else {

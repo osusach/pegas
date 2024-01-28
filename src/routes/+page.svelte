@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import type { Offer, Filter } from "$lib/utils/types";
   import { offers } from "$lib/utils/store";
   import FilterItem from "$lib/components/filterItem.svelte";
@@ -37,6 +36,11 @@
     const data: Offer[] = await res.json();
 
     $offers.push(...data);
+
+    $offers.sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+
     pagedOffers = $offers.slice(0, offersPerPage);
   };
 
@@ -115,24 +119,31 @@
 
 <main class="flex min-h-screen flex-col justify-center xl:flex-row">
   <div
-    class="m-4 flex min-w-[20rem] flex-col gap-4 border border-white bg-base-100/50 p-4"
+    class="m-4 flex min-w-[20rem] flex-col gap-4 border border-white bg-base-100/90 p-4"
   >
+    <h1 class="text-center text-6xl font-black">Oprah</h1>
     <SearchBar filter={filterOffers} {clearFilter} />
-    <details class="dropdown dropdown-open flex items-center">
-      <summary class="btn m-1 bg-secondary-content">Filtros</summary>
-      <ul class="dropdown-content z-[1] w-full rounded-box bg-secondary shadow">
-        {#each filterItems as item}
-          <li>
-            <FilterItem
-              text={item.text}
-              show={false}
-              func={manageFilters}
-              filterWords={item.filterWords}
-            />
-          </li>
+    <ul class="menu lg:menu-horizontal bg-base-200 rounded-box lg:mb-64">
+      <li class="w-full">
+        <details open>
+          <summary>Filtros</summary>
+          <ul class="w-full h-fit">
+            {#each filterItems as item}
+            <li class="h-fit">
+
+                <FilterItem
+                text={item.text}
+                show={false}
+                func={manageFilters}
+                filterWords={item.filterWords}
+                />
+            </li>
         {/each}
-      </ul>
-    </details>
+          </ul>
+        </details>
+      </li>
+    </ul>
+    
   </div>
 
   <div class="flex flex-col p-4 xl:w-3/4">
