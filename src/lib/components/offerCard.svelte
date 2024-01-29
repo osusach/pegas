@@ -11,16 +11,10 @@
     goto(`/jobs/?id=${offer.id}`);
   };
 
-  // Función para procesar el contenido HTML y mostrar solo el texto
-  function procesarContenidoHTML(html: string) {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = html;
-    return tempDiv.textContent || tempDiv.innerText;
-  }
 </script>
 
 <button
-  class="flex h-fit w-full flex-col rounded-sm bg-info-content p-4 text-left text-white hover:bg-stone-700"
+  class="flex h-fit w-full flex-col rounded-sm bg-info-content border-white border p-4 text-left text-white hover:bg-stone-700"
   on:click={() => verMas(offer)}
 >
   <div class="flex items-center justify-between gap-2">
