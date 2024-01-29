@@ -15,10 +15,16 @@
       <h1 class="text-3xl font-bold">Open Source USACH</h1>
     </aside>
     <nav>
-      <h6 class="footer-title">osusach</h6>
-      <a href="https://www.osusach.com/" class="">Website</a>
-      <a href="https://github.com/osusach/" class="">Github</a>
-      <a href="https://github.com/osusach/oprah" class="">Oprah Git</a>
+      <h6 class="footer-title text-xl">osusach</h6>
+      <a href="https://www.osusach.com/" class="link link-hover">Website</a>
+      <a href="https://github.com/osusach/" class="link link-hover">Github</a>
+      <a href="https://github.com/osusach/oprah" class="link link-hover">Oprah Git</a>
+    </nav>
+    <nav>
+      <h6 class="footer-title text-xl">Desarrolladores</h6>
+      <a href="https://github.com/panquequelol/" class="link link-hover">René Caceres</a>
+      <a href="https://github.com/Skyrdow/" class="link link-hover">Lucas Mesias</a>
+      <a href="https://github.com/Klefur/" class="link link-hover">Joaquin Saldivia</a>
     </nav>
   </footer>
 </div>
