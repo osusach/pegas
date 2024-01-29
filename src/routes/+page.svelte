@@ -121,7 +121,9 @@
   <div
     class="m-4 flex min-w-[20rem] flex-col gap-4 border border-white bg-base-100/90 p-4"
   >
-    <h1 class="text-center text-6xl font-black">Oprah</h1>
+    <a href="https://www.osusach.com/">
+      <h1 class="text-center text-6xl font-black">Oprah</h1>
+    </a>
     <SearchBar filter={filterOffers} {clearFilter} />
     <ul class="menu lg:menu-horizontal bg-secondary-content rounded-box lg:mb-64">
       <li class="w-full">
