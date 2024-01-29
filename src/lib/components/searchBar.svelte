@@ -15,6 +15,7 @@
   <button
     class="btn btn-circle btn-outline btn-xs -ms-8 hover:btn-error"
     on:click={clearFilter}
+    aria-label="Limpiar filtro"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
