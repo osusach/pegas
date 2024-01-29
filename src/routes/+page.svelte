@@ -125,27 +125,27 @@
       <h1 class="text-center text-6xl font-black">Oprah</h1>
     </a>
     <SearchBar filter={filterOffers} {clearFilter} />
-    <ul class="menu lg:menu-horizontal bg-secondary-content rounded-box lg:mb-64">
+    <ul
+      class="menu rounded-box bg-secondary-content lg:menu-horizontal lg:mb-64"
+    >
       <li class="w-full">
         <details open>
           <summary class="font-extrabold">Filtros</summary>
-          <ul class="w-full h-fit bg-secondary-content">
+          <ul class="h-fit w-full bg-secondary-content">
             {#each filterItems as item}
-            <li class="h-fit">
-
+              <li class="h-fit">
                 <FilterItem
-                text={item.text}
-                show={false}
-                func={manageFilters}
-                filterWords={item.filterWords}
+                  text={item.text}
+                  show={false}
+                  func={manageFilters}
+                  filterWords={item.filterWords}
                 />
-            </li>
-        {/each}
+              </li>
+            {/each}
           </ul>
         </details>
       </li>
     </ul>
-    
   </div>
 
   <div class="flex flex-col p-4 xl:w-3/4">

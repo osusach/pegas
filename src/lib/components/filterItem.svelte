@@ -9,16 +9,16 @@
   };
 </script>
 
-<label 
-for={"id-" + text}
-class="font-bold w-full hover:text-white"
+<label
+  for={"id-" + text}
+  class="w-full font-bold hover:text-white"
   class:text-accent-content={show}
   class:bg-accent={show}
   >{text}
   <input
     on:click={sendFilter}
     id={"id-" + text}
-    class="collapse-content bg-secondary-content text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content w-0 h-0"
+    class="collapse-content h-0 w-0 bg-secondary-content text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content"
     aria-label={text}
     bind:checked={show}
     type="checkbox"

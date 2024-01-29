@@ -13,7 +13,7 @@
     class="input input-bordered input-md w-full bg-secondary-content text-white"
   />
   <button
-    class="btn btn-circle btn-outline btn-xs -ms-8 hover:btn-error align-middle"
+    class="btn btn-circle btn-outline btn-xs -ms-8 align-middle hover:btn-error"
     on:click={clearFilter}
     aria-label="Limpiar filtro"
   >

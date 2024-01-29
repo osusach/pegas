@@ -4,15 +4,15 @@ import type { Offer } from "$lib/types";
 
 /** @type {import('./$types').RequestHandler} */
 export const GET: RequestHandler = async (response: any) => {
-    const  id  = response.url.searchParams.get('id');
-  
+  const id = response.url.searchParams.get("id");
+
   let query = `SELECT * FROM goodies WHERE id='${id}';`;
   if (id === null) {
     query = `SELECT * FROM goodies;`;
   }
-  
+
   const res = await client.execute(query);
-  
+
   if (res.rows.length === 0) {
     return json({ error: "Not found" });
   }

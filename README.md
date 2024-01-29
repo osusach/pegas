@@ -1,4 +1,5 @@
 # [Oprah](https://oprah.osusach.com/)
+
 Web scrapper de trabajos informáticos
 
 ![Turso](readme-icons/simple-icons--turso.svg)
@@ -9,10 +10,13 @@ Web scrapper de trabajos informáticos
 ![DaisyUI](readme-icons/daisyui-logotype.svg)
 
 ## Descripción
+
 Este proyecto es un web scrapper diseñado para obtener información sobre trabajos informáticos de diferentes sitios web.
 
 ## Contribución
+
 Si deseas contribuir a este proyecto, sigue estos pasos:
+
 1. Haz un fork del repositorio.
 2. Crea una rama para tu contribución: `git checkout -b mi-contribucion`.
 3. Realiza los cambios y realiza commits: `git commit -m "Agrega mi contribución"`.
@@ -20,8 +24,8 @@ Si deseas contribuir a este proyecto, sigue estos pasos:
 5. Haz push a tu rama: `git push origin mi-contribucion`.
 6. Abre un pull request en GitHub.
 
+## Tecnologías/Recursos utilizados:
 
-## Tecnologías/Recursos utilizados: 
 - [Turso](https://turso.tech/)
 - [Vercel](https://vercel.com)
 - [Svelte](https://svelte.dev/)
