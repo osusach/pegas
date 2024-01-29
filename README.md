@@ -1,38 +1,31 @@
-# create-svelte
+# [Oprah](https://oprah.osusach.com/)
+Web scrapper de trabajos informáticos
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+![DaisyUI](readme-icons/daisyui-logotype.svg)
+![Turso](readme-icons/simple-icons--turso.svg)
+![Svelte](readme-icons/skill-icons--svelte.svg)
+![TailwindCSS](readme-icons/skill-icons--tailwindcss-dark.svg)
+![Typescript](readme-icons/skill-icons--typescript.svg)
+![Vercel](readme-icons/skill-icons--vercel-dark.svg)
 
-## Creating a project
+## Descripción
+Este proyecto es un web scrapper diseñado para obtener información sobre trabajos informáticos de diferentes sitios web.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Contribución
+Si deseas contribuir a este proyecto, sigue estos pasos:
+1. Haz un fork del repositorio.
+2. Crea una rama para tu contribución: `git checkout -b mi-contribucion`.
+3. Realiza los cambios y realiza commits: `git commit -m "Agrega mi contribución"`.
+4. Formatea tu código con prettier: `npm run format`.
+5. Haz push a tu rama: `git push origin mi-contribucion`.
+6. Abre un pull request en GitHub.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Tecnologías/Recursos utilizados: 
+- [Turso](https://turso.tech/)
+- [Vercel](https://vercel.com)
+- [Svelte](https://svelte.dev/)
+- [SvelteKit](https://kit.svelte.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [DaisyUI](https://daisyui.com/)
+- [CSS Background Patterns](https://www.magicpattern.design/tools/css-backgrounds)
