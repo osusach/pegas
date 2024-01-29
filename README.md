@@ -1,12 +1,12 @@
 # [Oprah](https://oprah.osusach.com/)
 Web scrapper de trabajos informáticos
 
-![DaisyUI](readme-icons/daisyui-logotype.svg)
 ![Turso](readme-icons/simple-icons--turso.svg)
 ![Svelte](readme-icons/skill-icons--svelte.svg)
 ![TailwindCSS](readme-icons/skill-icons--tailwindcss-dark.svg)
 ![Typescript](readme-icons/skill-icons--typescript.svg)
 ![Vercel](readme-icons/skill-icons--vercel-dark.svg)
+![DaisyUI](readme-icons/daisyui-logotype.svg)
 
 ## Descripción
 Este proyecto es un web scrapper diseñado para obtener información sobre trabajos informáticos de diferentes sitios web.
