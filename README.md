@@ -28,4 +28,5 @@ Si deseas contribuir a este proyecto, sigue estos pasos:
 - [SvelteKit](https://kit.svelte.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [DaisyUI](https://daisyui.com/)
+- [iconify.design](iconify.design)
 - [CSS Background Patterns](https://www.magicpattern.design/tools/css-backgrounds)
