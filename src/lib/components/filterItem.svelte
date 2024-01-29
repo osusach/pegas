@@ -11,7 +11,7 @@
 
 <label 
 for={"id-" + text}
-class="font-bold w-full"
+class="font-bold w-full hover:text-white"
   class:text-accent-content={show}
   class:bg-accent={show}
   >{text}
