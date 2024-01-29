@@ -11,11 +11,11 @@
 
   const getJob = async () => {
     if ($viewedOffer.id) return $viewedOffer;
-    
+
     const res = await fetch(`/api/jobs/?id=${data.id}`);
     let offer = await res.json();
     offer = offer[0];
-    
+
     if (!offer.error) {
       return offer;
     } else {
@@ -42,11 +42,13 @@
       <Loading />
     {:then offer}
       <div
-        class="max-h-[90vh] gap-4 border border-[#b6b6b6] bg-secondary-content p-4 overflow-y-scroll"
+        class="max-h-[90vh] gap-4 overflow-y-scroll border border-[#b6b6b6] bg-secondary-content p-4"
       >
         <h1 class="text-3xl font-black">{offer.id}</h1>
-<span class="font-semibold">{offer.date}</span>
-        <div class="divider divider-accent"><span class="badge badge-info badge-outline">{offer.source}</span></div>
+        <span class="font-semibold">{offer.date}</span>
+        <div class="divider divider-accent">
+          <span class="badge badge-info badge-outline">{offer.source}</span>
+        </div>
         <p>{@html offer.content}</p>
       </div>
     {:catch error}
