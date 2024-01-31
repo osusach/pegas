@@ -1,4 +1,4 @@
-# [Oprah](https://oprah.osusach.com/)
+# [Pegas](https://pegas.osusach.com/)
 
 Web scrapper de trabajos informáticos
 

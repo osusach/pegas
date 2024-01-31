@@ -18,7 +18,7 @@
       <h6 class="footer-title text-xl">osusach</h6>
       <a href="https://www.osusach.com/" class="link link-hover">Website</a>
       <a href="https://github.com/osusach/" class="link link-hover">Github</a>
-      <a href="https://github.com/osusach/oprah" class="link link-hover">Oprah Git</a>
+      <a href="https://github.com/osusach/pegas" class="link link-hover">Source Code Git</a>
     </nav>
     <nav>
       <h6 class="footer-title text-xl">Desarrolladores</h6>
