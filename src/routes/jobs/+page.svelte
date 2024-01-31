@@ -37,12 +37,12 @@
     Volver
   </a>
 
-  <div class="flex h-full items-center justify-center">
+  <div class="flex h-full items-center justify-center w-full ">
     {#await offerPromise}
       <Loading />
     {:then offer}
       <div
-        class="h-full gap-4 border border-[#b6b6b6] bg-secondary-content p-4"
+        class="h-full w-full gap-4 border border-[#b6b6b6] bg-secondary-content p-4"
       >
         <h1 class="text-3xl font-black">{offer.id}</h1>
         <span class="font-semibold">{offer.date}</span>
