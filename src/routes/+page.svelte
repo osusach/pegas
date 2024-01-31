@@ -7,29 +7,13 @@
   import SearchBar from "$lib/components/searchBar.svelte";
   import Loading from "$lib/components/loading.svelte";
   import ErrorAlert from "$lib/components/ErrorAlert.svelte";
+  import Filters from "./filtrerList";
 
   let pagedOffers: Offer[] = [];
   let page = 1;
   let offersPerPage = 5;
   const filtros: string[] = [];
-  const filterItems: Filter[] = [
-    {
-      text: "IA",
-      filterWords: [
-        "machine learning",
-        "artificial intelligence",
-        "inteligencia artificial",
-      ],
-    },
-    {
-      text: "Desarrollo Web",
-      filterWords: ["web", "desarrollo web", "front-end", "frontend"],
-    },
-    {
-      text: "Práctica",
-      filterWords: ["internship", "practica", "trabajo de titulo"],
-    },
-  ];
+  const filterItems: Filter[] = Filters;
 
   const allJobs = async () => {
     const res = await fetch("/api/jobs");
@@ -119,19 +103,31 @@
 
 <main class="flex min-h-screen flex-col justify-center xl:flex-row">
   <div
-    class="m-4 flex min-w-[20rem] flex-col gap-4 border border-white bg-base-100/90 p-4"
+    class="sm:m-4 flex min-w-[20rem] flex-col gap-4 border border-white bg-base-100/90 p-4"
   >
-    <a href="https://www.osusach.com/">
-      <h1 class="text-center text-6xl font-black">Oprah</h1>
+    <a href="https://www.osusach.com/"
+    class="flex flex-col items-center">
+      <span class="flex flex-row  self-start gap-1 w-fit">
+        <h1 class="text-center text-6xl font-black">Pegas</h1>
+        <img class="h-[60px]" src="/shovel.svg" alt="shovel icon">
+      </span>
+      <span class="flex items-center gap-2 justify-center self-end">
+        <img
+          class="h-6"
+          src="/logo_transparent.svg"
+          alt="Open Source Usach logo"
+        />
+        <h1 class="text-xl font-bold">Open Source USACH</h1>
+      </span>
     </a>
     <SearchBar filter={filterOffers} {clearFilter} />
     <ul
-      class="menu rounded-box bg-secondary-content lg:menu-horizontal lg:mb-64"
+      class="menu rounded-box bg-secondary-content w- lg:menu-horizontal lg:mb-64"
     >
       <li class="w-full">
         <details open>
           <summary class="font-extrabold">Filtros</summary>
-          <ul class="h-fit w-full bg-secondary-content">
+          <ul class="h-fit w-full bg-secondary-content m-0 p-0">
             {#each filterItems as item}
               <li class="h-fit">
                 <FilterItem

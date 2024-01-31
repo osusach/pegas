@@ -28,7 +28,7 @@
   });
 </script>
 
-<div class="flex h-screen flex-col items-center gap-2 p-3">
+<div class="flex min-h-screen flex-col items-center gap-2 p-1 sm:p-10">
   <a
     href="/"
     class="btn btn-outline btn-md w-full bg-secondary-content text-xl"
@@ -37,12 +37,12 @@
     Volver
   </a>
 
-  <div class="flex h-auto flex-grow items-center justify-center">
+  <div class="flex h-full items-center justify-center">
     {#await offerPromise}
       <Loading />
     {:then offer}
       <div
-        class="max-h-[90vh] gap-4 overflow-y-scroll border border-[#b6b6b6] bg-secondary-content p-4"
+        class="h-full gap-4 border border-[#b6b6b6] bg-secondary-content p-4"
       >
         <h1 class="text-3xl font-black">{offer.id}</h1>
         <span class="font-semibold">{offer.date}</span>
