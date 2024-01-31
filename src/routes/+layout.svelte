@@ -8,7 +8,7 @@
   <footer class="footer bg-base-200 p-10 text-base-content">
     <aside>
       <img
-        class="h-14 w-14"
+        class="h-20"
         src="/logo_transparent.svg"
         alt="Open Source Usach logo"
       />
@@ -23,8 +23,8 @@
     <nav>
       <h6 class="footer-title text-xl">Desarrolladores</h6>
       <a href="https://github.com/panquequelol/" class="link link-hover">René Caceres</a>
-      <a href="https://github.com/Skyrdow/" class="link link-hover">Lucas Mesias</a>
-      <a href="https://github.com/Klefur/" class="link link-hover">Joaquin Saldivia</a>
+      <a href="https://github.com/Skyrdow/" class="link link-hover">Lucas Mesías</a>
+      <a href="https://github.com/Klefur/" class="link link-hover">Joaquín Saldivia</a>
     </nav>
   </footer>
 </div>
