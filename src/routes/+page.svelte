@@ -122,12 +122,12 @@
     </a>
     <SearchBar filter={filterOffers} {clearFilter} />
     <ul
-      class="menu rounded-box bg-secondary-content w- lg:menu-horizontal lg:mb-64"
+      class="menu rounded-box bg-secondary-content menu-horizontal"
     >
       <li class="w-full">
         <details open>
           <summary class="font-extrabold">Filtros</summary>
-          <ul class="h-fit w-full bg-secondary-content m-0 p-0">
+          <ul class="before:m-0 before:p-0 h-fit w-full bg-secondary-content ">
             {#each filterItems as item}
               <li class="h-fit">
                 <FilterItem
