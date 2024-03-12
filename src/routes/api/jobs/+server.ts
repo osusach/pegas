@@ -12,7 +12,7 @@ const GetKeywords = (content: string) => {
       keywords.push(word);
     }
   });
-  return keywords;
+  return keywords.sort();
 }
 
 
