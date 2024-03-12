@@ -1,6 +1,20 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
 import client from "$db/turso";
-import type { Offer } from "$lib/types";
+import type { Offer } from "$lib/utils/types";
+import keywordList from "./keywordList";
+
+const GetKeywords = (content: string) => {
+  const keywords: string[] = [];
+  const text = content.toLowerCase();
+  
+  keywordList.forEach(word => {
+    if (text.includes(word.toLowerCase())) {
+      keywords.push(word);
+    }
+  });
+  return keywords;
+}
+
 
 /** @type {import('./$types').RequestHandler} */
 export const GET: RequestHandler = async (response: any) => {
@@ -22,6 +36,7 @@ export const GET: RequestHandler = async (response: any) => {
       id: r.id as string,
       date: r.date as string,
       content: r.content as string,
+      keywords: GetKeywords(r.content as string),
       source: r.source as string,
     };
   });

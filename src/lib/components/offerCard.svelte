@@ -7,7 +7,7 @@
 
   const verMas = (offer: Offer) => {
     viewedOffer.set(offer);
-
+    
     goto(`/jobs/?id=${offer.id}`);
   };
 </script>
@@ -23,6 +23,13 @@
     <span class="font-semibold">
       {offer.date}
     </span>
+  </div>
+  <div class="flex gap-2">
+    {#each offer.keywords as keyword}
+    <p class="badge badge-success badge-outline">
+      {keyword}
+    </p>
+    {/each}
   </div>
   <div class="divider divider-accent">
     <p class="badge badge-info badge-outline">

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Offer, Filter } from "$lib/utils/types";
-  import { offers } from "$lib/utils/store";
+  import { offers, lastUpdate, paginationIndex } from "$lib/utils/store";
   import FilterItem from "$lib/components/filterItem.svelte";
   import OfferCard from "$lib/components/offerCard.svelte";
   import Pagination from "$lib/components/pagination.svelte";
@@ -10,22 +10,30 @@
   import Filters from "./filtrerList";
 
   let pagedOffers: Offer[] = [];
-  let page = 1;
   let offersPerPage = 5;
   const filtros: string[] = [];
   const filterItems: Filter[] = Filters;
+  const updateTime = 600000;
 
   const allJobs = async () => {
-    const res = await fetch("/api/jobs");
-    const data: Offer[] = await res.json();
-
-    $offers.push(...data);
-
-    $offers.sort((a, b) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
-
-    pagedOffers = $offers.slice(0, offersPerPage);
+    const actualTime = new Date().getTime();
+    if (!$lastUpdate || (actualTime - $lastUpdate) > updateTime) {
+      const res = await fetch("/api/jobs");
+      const data: Offer[] = await res.json();
+      offers.set([]);
+      $offers.push(...data);
+      $offers.sort((a, b) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
+      paginationIndex.set(1);
+    }
+    lastUpdate.set(actualTime);
+    const page = $paginationIndex;
+    paginationIndex.set(page);
+    const start = (page - 1) * offersPerPage;
+    const end = page * offersPerPage;
+    
+    pagedOffers = $offers.slice(start, end);
   };
 
   let jobsPromise = allJobs();
@@ -43,14 +51,14 @@
       );
     });
     pagedOffers = filteredOffers.slice(0, offersPerPage);
-    page = 1;
+    paginationIndex.set(1);
   };
-
+  
   const clearFilter = () => {
     // Limpiar el input
     (<HTMLInputElement>document.getElementById("filter")).value = "";
-    pagedOffers = $offers.slice(0, offersPerPage);
-    page = 1;
+      pagedOffers = $offers.slice(0, offersPerPage);
+      paginationIndex.set(1);
   };
 
   const manageFilters = (text: string[]) => {
@@ -81,20 +89,22 @@
         .includes(true);
     });
     pagedOffers = filteredOffers.slice(0, offersPerPage);
-    page = 1;
+    paginationIndex.set(1);
   };
 
   // Funciones para la paginación
 
   const previousPage = () => {
-    page--;
+    const page = $paginationIndex - 1;
+    paginationIndex.set(page);
     const start = (page - 1) * offersPerPage;
     const end = page * offersPerPage;
     pagedOffers = $offers.slice(start, end);
   };
-
+  
   const nextPage = () => {
-    page++;
+    const page = $paginationIndex + 1;
+    paginationIndex.set(page);
     const start = (page - 1) * offersPerPage;
     const end = page * offersPerPage;
     pagedOffers = $offers.slice(start, end);
@@ -147,7 +157,7 @@
   <div class="flex flex-col p-4 xl:w-3/4">
     <Pagination
       {offersPerPage}
-      {page}
+      page={$paginationIndex}
       {pagedOffers}
       {previousPage}
       {nextPage}
@@ -167,7 +177,7 @@
     </div>
     <Pagination
       {offersPerPage}
-      {page}
+      page={$paginationIndex}
       {pagedOffers}
       {previousPage}
       {nextPage}
