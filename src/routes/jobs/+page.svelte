@@ -46,7 +46,7 @@
       >
         <h1 class="text-3xl font-black">{offer.id}</h1>
         <span class="font-semibold">{offer.date}</span>
-        <div class="flex gap-2">
+        <div class="flex flex-wrap gap-2">
           {#each offer.keywords as keyword}
           <p class="badge badge-success badge-outline">
             {keyword}

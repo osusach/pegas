@@ -24,9 +24,9 @@
       {offer.date}
     </span>
   </div>
-  <div class="flex gap-2">
+  <div class="flex flex-wrap gap-2">
     {#each offer.keywords as keyword}
-    <p class="badge badge-success badge-outline">
+    <p class="w-fit badge badge-success badge-outline">
       {keyword}
     </p>
     {/each}
