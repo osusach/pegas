@@ -135,9 +135,9 @@
       class="menu rounded-box bg-secondary-content menu-horizontal"
     >
       <li class="w-full">
-        <details open>
+        <details>
           <summary class="font-extrabold">Filtros</summary>
-          <ul class="before:m-0 before:p-0 h-fit w-full bg-secondary-content ">
+          <ul class="before:m-0 before:p-0 h-[50vh] w-full bg-secondary-content overflow-y-scroll">
             {#each filterItems as item}
               <li class="h-fit">
                 <FilterItem
@@ -156,6 +156,7 @@
 
   <div class="flex flex-col p-4 xl:w-3/4">
     <Pagination
+      class="mb-2"
       {offersPerPage}
       page={$paginationIndex}
       {pagedOffers}
@@ -176,6 +177,7 @@
       {/await}
     </div>
     <Pagination
+      class="mt-2"
       {offersPerPage}
       page={$paginationIndex}
       {pagedOffers}

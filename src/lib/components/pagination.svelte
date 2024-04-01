@@ -10,7 +10,7 @@
   };
 </script>
 
-<div class="join grid grid-cols-2">
+<div class="join grid grid-cols-2 {$$props.class}">
   {#if page > 1}
     <button
       on:click={previousPage}
