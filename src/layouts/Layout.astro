@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Pegas</title>
+  </head>
+  <body>
+    <main class="md:max-w-7xl max-w-none mx-auto p-2">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: "Quattro";
+    src: url("/fonts/iAWriterQuattroV.ttf") format("truetype");
+    font-weight: 100 900; /* Adjust based on your font's weight range */
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Quattro";
+    src: url("/fonts/iAWriterQuattroV-Italic.ttf") format("truetype");
+    font-weight: 100 900; /* Adjust based on your font's weight range */
+    font-style: italic;
+  }
+</style>

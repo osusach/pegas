@@ -1,0 +1,26 @@
+---
+import List from "../components/cards/list";
+import type { Offer } from "../components/cards/type";
+import Layout from "../layouts/Layout.astro";
+import { createClient } from "@libsql/client/web";
+
+const turso = createClient({
+  url: import.meta.env.TURSO_URL!,
+  authToken: import.meta.env.TURSO_TOKEN!,
+});
+
+const currentDate = new Date();
+const month = new Intl.DateTimeFormat("es-ES", { month: "long" }).format(
+  currentDate
+);
+const day = currentDate.getDate();
+const year = currentDate.getFullYear();
+
+const offers = (await turso.execute("SELECT * FROM offers"))
+  .rows as unknown as Offer[];
+---
+
+<Layout>
+  <h1 class="mb-2">Últimas ofertas ({day} {month}, {year})</h1>
+  <List client:idle offers={offers} />
+</Layout>
