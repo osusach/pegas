@@ -1,36 +1,48 @@
-# [Pegas](https://pegas.osusach.com/)
+# Astro Starter Kit: Basics
 
-Web scrapper de trabajos informáticos
+```sh
+npm create astro@latest -- --template basics
+```
 
-![Turso](readme-icons/simple-icons--turso.svg)
-![Svelte](readme-icons/skill-icons--svelte.svg)
-![TailwindCSS](readme-icons/skill-icons--tailwindcss-dark.svg)
-![Typescript](readme-icons/skill-icons--typescript.svg)
-![Vercel](readme-icons/skill-icons--vercel-dark.svg)
-![DaisyUI](readme-icons/daisyui-logotype.svg)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
 
-## Descripción
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-Este proyecto es un web scrapper diseñado para obtener información sobre trabajos informáticos de diferentes sitios web.
+![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
 
-## Contribución
+## 🚀 Project Structure
 
-Si deseas contribuir a este proyecto, sigue estos pasos:
+Inside of your Astro project, you'll see the following folders and files:
 
-1. Haz un fork del repositorio.
-2. Crea una rama para tu contribución: `git checkout -b mi-contribucion`.
-3. Realiza los cambios y realiza commits: `git commit -m "Agrega mi contribución"`.
-4. Formatea tu código con prettier: `npm run format`.
-5. Haz push a tu rama: `git push origin mi-contribucion`.
-6. Abre un pull request en GitHub.
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-## Tecnologías/Recursos utilizados:
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-- [Turso](https://turso.tech/)
-- [Vercel](https://vercel.com)
-- [Svelte](https://svelte.dev/)
-- [SvelteKit](https://kit.svelte.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [DaisyUI](https://daisyui.com/)
-- [iconify.design](iconify.design)
-- [CSS Background Patterns](https://www.magicpattern.design/tools/css-backgrounds)
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
