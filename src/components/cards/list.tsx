@@ -27,12 +27,11 @@ export default function List(props: Props) {
           id="seniority"
         >
           <option value="ALL">Todos</option>
-          <option value="INTERNSHIP">Practicante</option>
-          <option value="NEWGRAD">Recién titulado</option>
+          <option value="NOEXPERIENCE">Sin experiencia</option>
           <option value="JUNIOR">Junior</option>
         </select>
       </div>
-      <ul className="grid lg:grid-cols-4 gap-2 w-full">
+      <ul className="grid md:grid-cols-3 xl:grid-cols-4 gap-2 w-full">
         {filtered.map((offer) => (
           <OfferCard key={offer.title} {...offer} />
         ))}
