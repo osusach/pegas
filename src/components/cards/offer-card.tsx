@@ -8,6 +8,10 @@ function shorten(content: string, length: number): string {
     : content;
 }
 
+function formatCompanyName(company: string) {
+  return shorten(company.split(/・| - /)[0], 32);
+}
+
 export default function OfferCard(props: Offer) {
   return (
     <a
@@ -17,8 +21,10 @@ export default function OfferCard(props: Offer) {
       className={cn(
         "border flex flex-col justify-between group hover:opacity-50 duration-200 p-2 space-y-2 min-h-32",
         {
-          "border-blue-700 text-blue-700": props.seniority === "NOEXPERIENCE",
-          "border-red-700 text-red-700": props.seniority === "JUNIOR",
+          "border-blue-700 text-blue-700 dark:border-blue-400 dark:text-blue-400":
+            props.seniority === "NOEXPERIENCE",
+          "border-red-700 text-red-700 dark:border-red-400 dark:text-red-400":
+            props.seniority === "JUNIOR",
         }
       )}
     >
@@ -30,10 +36,10 @@ export default function OfferCard(props: Offer) {
           <div className="flex gap-2 justify-between items-end w-full">
             <div>
               <h2 className="whitespace-nowrap">
-                {shorten(props.company || "", 20)}
+                {formatCompanyName(props.company || "")}
               </h2>
               {props.salary ? (
-                <p className="bg-emerald-600 text-white w-fit">
+                <p className="bg-green-600 dark:bg-green-500 text-white dark:text-black w-fit">
                   {props.salary}
                 </p>
               ) : (

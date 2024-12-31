@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OfferCard from "./offer-card";
 import type { Offer } from "./type";
 
@@ -7,21 +7,36 @@ type Props = {
 };
 
 export default function List(props: Props) {
-  const [filtered, setFiltered] = useState(props.offers);
+  const sortedOffers = props.offers.sort((a, b) =>
+    a.location.localeCompare(b.location)
+  );
+
+  const [filtered, setFiltered] = useState(sortedOffers);
+  const [filters, setFilters] = useState({
+    seniority: "ALL",
+    location: "ALL",
+  });
+
+  useEffect(() => {
+    setFiltered(
+      sortedOffers.filter(
+        (offer) =>
+          (filters.seniority === "ALL" ||
+            offer.seniority === filters.seniority) &&
+          (filters.location === "ALL" || offer.location === filters.location)
+      )
+    );
+  }, [filters]);
+
   return (
     <>
       <div className="flex justify-between mb-2">
         <label htmlFor="seniority">Seniority:</label>
         <select
-          className="border bg-transparent border-black"
+          className="border bg-transparent border-black dark:border-white"
           onChange={(e) => {
-            setFiltered(
-              e.target.value === "ALL"
-                ? props.offers
-                : props.offers.filter(
-                    (offer) => offer.seniority === e.target.value
-                  )
-            );
+            const seniority = e.target.value;
+            setFilters((prev) => ({ seniority, location: prev.location }));
           }}
           name="seniority"
           id="seniority"
@@ -31,7 +46,25 @@ export default function List(props: Props) {
           <option value="JUNIOR">Junior</option>
         </select>
       </div>
-      <ul className="grid md:grid-cols-3 xl:grid-cols-4 gap-2 w-full">
+      <div className="flex justify-between mb-2">
+        <label htmlFor="location">Ubicación:</label>
+        <select
+          className="border bg-transparent border-black dark:border-white"
+          onChange={(e) => {
+            const location = e.target.value;
+            setFilters((prev) => ({ location, seniority: prev.seniority }));
+          }}
+          name="location"
+          id="location"
+        >
+          <option value="ALL">Todos</option>
+          <option value="JAPAN">Japón</option>
+          <option value="KOREA">Corea del Sur</option>
+          <option value="ONSITE">Presencial (Chile)</option>
+          <option value="REMOTE">Remoto</option>
+        </select>
+      </div>
+      <ul className="grid md:grid-cols-3 gap-2 w-full">
         {filtered.map((offer) => (
           <OfferCard key={offer.title} {...offer} />
         ))}
