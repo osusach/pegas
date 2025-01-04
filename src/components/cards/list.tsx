@@ -30,45 +30,49 @@ export default function List(props: Props) {
 
   return (
     <>
-      <div className="flex justify-between mb-2">
-        <label htmlFor="seniority">Seniority:</label>
-        <select
-          className="border bg-transparent border-black dark:border-white"
-          onChange={(e) => {
-            const seniority = e.target.value;
-            setFilters((prev) => ({ seniority, location: prev.location }));
-          }}
-          name="seniority"
-          id="seniority"
-        >
-          <option value="ALL">Todos</option>
-          <option value="NOEXPERIENCE">Sin experiencia</option>
-          <option value="JUNIOR">Junior</option>
-        </select>
+      <div className="p-2 space-y-2">
+        <div className="flex justify-between">
+          <label htmlFor="seniority">Seniority:</label>
+          <select
+            className="border-[0.5px] bg-transparent border-stone-700"
+            onChange={(e) => {
+              const seniority = e.target.value;
+              setFilters((prev) => ({ seniority, location: prev.location }));
+            }}
+            name="seniority"
+            id="seniority"
+          >
+            <option value="ALL">Todos</option>
+            <option value="NOEXPERIENCE">Sin experiencia</option>
+            <option value="JUNIOR">Junior</option>
+          </select>
+        </div>
+        <div className="flex justify-between">
+          <label htmlFor="location">Ubicación:</label>
+          <select
+            className="border-[0.5px] bg-transparent border-stone-700"
+            onChange={(e) => {
+              const location = e.target.value;
+              setFilters((prev) => ({ location, seniority: prev.seniority }));
+            }}
+            name="location"
+            id="location"
+          >
+            <option value="ALL">Todos</option>
+            <option value="JAPAN">Japón</option>
+            <option value="KOREA">Corea del Sur</option>
+            <option value="ONSITE">Presencial (Chile)</option>
+            <option value="REMOTE">Remoto</option>
+          </select>
+        </div>
       </div>
-      <div className="flex justify-between mb-2">
-        <label htmlFor="location">Ubicación:</label>
-        <select
-          className="border bg-transparent border-black dark:border-white"
-          onChange={(e) => {
-            const location = e.target.value;
-            setFilters((prev) => ({ location, seniority: prev.seniority }));
-          }}
-          name="location"
-          id="location"
-        >
-          <option value="ALL">Todos</option>
-          <option value="JAPAN">Japón</option>
-          <option value="KOREA">Corea del Sur</option>
-          <option value="ONSITE">Presencial (Chile)</option>
-          <option value="REMOTE">Remoto</option>
-        </select>
+      <div className="overflow-x-auto">
+        <ul className="grid w-full divide-y divide-stone-700 min-w-[600px]">
+          {filtered.map((offer) => (
+            <OfferCard key={offer.title} {...offer} />
+          ))}
+        </ul>
       </div>
-      <ul className="grid md:grid-cols-3 gap-2 w-full">
-        {filtered.map((offer) => (
-          <OfferCard key={offer.title} {...offer} />
-        ))}
-      </ul>
     </>
   );
 }

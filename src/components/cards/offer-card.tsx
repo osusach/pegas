@@ -13,49 +13,41 @@ function formatCompanyName(company: string) {
 }
 
 export default function OfferCard(props: Offer) {
+  const location = match(props.location)
+    .with("KOREA", () => "Corea del Sur")
+    .with("REMOTE", () => "Remoto")
+    .with("JAPAN", () => "Japón")
+    .with("ONSITE", () => "Chile")
+    .otherwise(() => null);
   return (
     <a
       href={props.url}
       target="_blank"
       rel="noreferrer"
       className={cn(
-        "border flex flex-col justify-between group hover:opacity-50 duration-200 p-2 space-y-2 min-h-32",
-        {
-          "border-blue-700 text-blue-700 dark:border-blue-400 dark:text-blue-400":
-            props.seniority === "NOEXPERIENCE",
-          "border-red-700 text-red-700 dark:border-red-400 dark:text-red-400":
-            props.seniority === "JUNIOR",
-        }
+        "hover:opacity-50 duration-200 space-y-2 hover:bg-stone-900 p-2"
       )}
     >
-      <div>
-        <h1 className="text-lg">{props.title}</h1>
-      </div>
-      <div className="flex justify-between items-end">
-        <div className="w-full">
-          <div className="flex gap-2 justify-between items-end w-full">
-            <div>
-              <h2 className="whitespace-nowrap">
-                {formatCompanyName(props.company || "")}
-              </h2>
-              {props.salary ? (
-                <p className="bg-green-600 dark:bg-green-500 text-white dark:text-black w-fit">
-                  {props.salary}
-                </p>
-              ) : (
-                <div></div>
-              )}
-            </div>
-            <p>
-              {match(props.location)
-                .with("KOREA", () => "Corea del Sur")
-                .with("REMOTE", () => "Remoto")
-                .with("JAPAN", () => "Japón")
-                .with("ONSITE", () => "Chile")
-                .otherwise(() => null)}
-            </p>
-          </div>
+      <div className="grid grid-cols-4 gap-2">
+        <div className="col-span-2">
+          <h1
+            className={cn("uppercase", {
+              "text-blue-400": props.seniority === "NOEXPERIENCE",
+              "text-amber-400": props.seniority === "JUNIOR",
+            })}
+          >
+            ## {props.title}
+          </h1>
+          <p> {formatCompanyName(props.company || "")}</p>
         </div>
+        <p>{location}</p>
+        {props.salary ? (
+          <p className="bg-emerald-700 text-white w-fit px-1 h-fit">
+            {props.salary}
+          </p>
+        ) : (
+          <div></div>
+        )}
       </div>
     </a>
   );

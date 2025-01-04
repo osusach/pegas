@@ -1,7 +1,6 @@
 ---
 import List from "../components/cards/list";
 import type { Offer } from "../components/cards/type";
-import Footer from "../components/footer";
 import Layout from "../layouts/Layout.astro";
 import { createClient } from "@libsql/client/web";
 
@@ -21,26 +20,13 @@ const offers = (await turso.execute("SELECT * FROM offers"))
 ---
 
 <Layout>
-  <div class="bg-orange-500">
-    <div
-      class="md:max-w-7xl max-w-none mx-auto p-2 flex justify-between items-end"
-    >
-      <div class="text-white">
-        <p class="font-semibold text-xl">OSUSACH PEGAS</p>
-        <p>Ofertas de trabajo entry level.</p>
-        <p>Prácticas, recién titulados y juniors.</p>
-      </div>
-      <img
-        src="/logo.png"
-        alt="Logo de Open Source USACH"
-        class="w-24 h-24"
-        style="filter: brightness(0) invert(1);"
-      />
+  <main class="md:max-w-5xl max-w-none mx-auto pb-2">
+    <div class="p-2">
+      <h1 class="text-orange-500"># PEGAS OSUSACH</h1>
+      <p>
+        Ofertas de trabajo entry level. Prácticas, recién titulados y juniors.
+      </p>
     </div>
-  </div>
-  <main class="md:max-w-7xl max-w-none mx-auto p-2">
-    <h1 class="mb-2">Últimas ofertas ({day} {month})</h1>
     <List client:idle offers={offers} />
   </main>
-  <Footer client:visible />
 </Layout>
